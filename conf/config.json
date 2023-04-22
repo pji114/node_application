@@ -1,0 +1,85 @@
+{
+    "nodeENV" : "local",
+    "profileActive" : "app",
+    "apiVersion" : "v1",    
+    "mainPath" : "magicplus",
+    "timeOut" : 5000,    
+    "secretInfo" : {
+        "cryptoKey" : "SKMAGIC-PLUS",
+        "jwtAccessKey" : "MAGICPLUS-ACCESS-TOKEN",
+        "jwtRefreshKey" : "MAGICPLUS-REFRESH-TOKEN"
+    },
+    "local" : {
+        "serverInfo" : {
+            "protocol" : "http",
+            "host" : "localhost",
+            "port" : 8999,
+            "appPort" : 9000,
+            "homePort" : 9001,
+            "myPort" : 9002,
+            "productPort" : 9003,
+            "eventPort" : 9004,
+            "orderPort" : 9005
+        },
+        "swaggerInfo" : {
+            "path" : "C:/Users/20002827/Documents/workspace/skmg-plus-sevice/skmg-plus-server"
+        },
+        "databaseInfo" : {
+            "host" : "localhost",
+            "port" : 3306,
+            "user" : "skmgdbuser",
+            "password" : "U2FsdGVkX19fZzNKoUmGbO17z47fealwUfuX15szEq8=",
+            "database": "U2FsdGVkX1/nLT2Xf5CePEGox/Q5Vq2JTeZVXrNQUYI=",
+            "connectionLimit" : 30,
+            "waitForConnections" : false, 
+            "multipleStatements" : true
+        }
+    },
+    "dev" : {
+        "serverInfo" : {
+            "protocol" : "https",
+            "host" : "localhost",
+            "port" : 8999,
+            "appPort" : 9000,
+            "homePort" : 9001,
+            "myPort" : 9002,
+            "productPort" : 9003,
+            "eventPort" : 9004,
+            "orderPort" : 9005
+        },        
+        "databaseInfo" : {
+            "host" : "localhost",
+            "port" : 3306,
+            "user" : "skmgdbuser",
+            "password" : "U2FsdGVkX1/DwjF+4NBfefVqO1TV3lO3XR6TkF0Saes=",
+            "database": "U2FsdGVkX1/CViZS1+x3arGSilQ/89bb7TvXvCX9pbI=",
+            "connectionLimit" : 30,
+            "waitForConnections" : false, 
+            "multipleStatements" : true
+        }
+    },
+    "prod" : {
+        "serverInfo" : {
+            "protocol" : "https",
+            "host" : "localhost",
+            "port" : 8999,
+            "appPort" : 9000,
+            "homePort" : 9001,
+            "myPort" : 9002,
+            "productPort" : 9003,
+            "eventPort" : 9004,
+            "orderPort" : 9005
+        },
+        "databaseInfo" : {
+            "host" : "localhost",
+            "port" : 3306,
+            "user" : "skmgdbuser",
+            "password" : "U2FsdGVkX18NZQI06Y2I0RQ5msNC0iPGvhrPubFfMgI=",
+            "database": "U2FsdGVkX18fZqOiGS5AAzOGkJosqujEAwzc9I602AE=",
+            "connectionLimit" : 30,
+            "waitForConnections" : false, 
+            "multipleStatements" : true
+        }
+    }    
+
+}

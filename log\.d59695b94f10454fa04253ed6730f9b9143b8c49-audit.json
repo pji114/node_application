@@ -1,0 +1,40 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 60
+    },
+    "auditLog": "log\\.d59695b94f10454fa04253ed6730f9b9143b8c49-audit.json",
+    "files": [
+        {
+            "date": 1680860322462,
+            "name": "log\\MAGICPLUS_2023-04-07.log",
+            "hash": "9797b2bfeccf4878ea9c9090d349a0db85be621305ccf673622036507bcb6766"
+        },
+        {
+            "date": 1681086544414,
+            "name": "log\\MAGICPLUS_2023-04-10.log",
+            "hash": "c9f0b57bb50cce1fc1c1828522aef5df3e6b30adc973109f98f4eb6d55896a67"
+        },
+        {
+            "date": 1681169093023,
+            "name": "log\\MAGICPLUS_2023-04-11.log",
+            "hash": "b89dd65507c38fdfd29817cf4871571cd955869e795479e99df475815ff402b9"
+        },
+        {
+            "date": 1681255199414,
+            "name": "log\\MAGICPLUS_2023-04-12.log",
+            "hash": "b5de4ba471722100fb370f4a4e9e9dbab964b5bf145de31709794f09a8a2e09f"
+        },
+        {
+            "date": 1681343200457,
+            "name": "log\\MAGICPLUS_2023-04-13.log",
+            "hash": "1437da2c44cc9bf10ee185c39fb32a4993066fc4ebbdd2567820d21d3ebf1caf"
+        },
+        {
+            "date": 1682140984857,
+            "name": "log/MAGICPLUS_2023-04-22.log",
+            "hash": "48874b7f97dc3eedcc7c9ac7c4b8936a8cc86f6aad0527a72980352469681651"
+        }
+    ],
+    "hashType": "sha256"
+}
