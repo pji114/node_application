@@ -1,0 +1,172 @@
+
+
+#definitions:
+#  ResCode:
+#    type: string
+#    description: 응답 코드<br>
+#        `0000` - 성공
+#    enum: &ResCode ['0000']
+    
+#  ResCode_ERROR:
+#    type: string
+#    description: 오류 응답 코드<br>
+#        `1000` - 토큰 값이 없습니다.<br>
+#        `1001` - 토큰 만료되었습니다.<br>
+#        `1002` - 토큰 유효하지 않습니다.<br>
+#        `1003` - 토큰 발급 오류 입니다.<br>
+#        `1004` - 토큰 유형 오류 입니다.<br>
+#        `1009` - 토큰 오류 입니다.<br>
+#        `2000` - [DB ERROR] 연결실패.<br>
+#        `2001` - [DB ERROR] 잘못된 컬럼 값 입니다.<br>
+#        `3000` - 형식이 올바르지 않습니다.<br>
+#        `3001` - 요청 Header 형식이 올바르지 않습니다.<br>
+#        `3002` - 요청 Body 형식이 올바르지 않습니다.<br>
+#        `3003` - 요청 Header에 API-ID값이 올바르지 않습니다.<br>
+#        `3004` - 요청 Body에 Parameters가 올바르지 않습니다.<br>
+#        `9999` - 서비스 에러<br>
+#        `-9999` - 정의되지 않는 ErrorCode 입니다.(UNDEFINDED_ERROR)
+#    enum: &ResCode_ERROR [1000, 1001, 1002, 1003, 1004, 1009, 2000, 2001, 3000, 3001, 3002, 3003, 3004, 9999, -9999]
+
+
+/v1/auth/get-access-token:
+  post:
+    summary: 인증 토큰 발급
+    consumes:
+      - application/json    
+    tags: [Auth/Login]
+    parameters:
+      - in: header
+        name: API-ID
+        description: API아이디(요청자를 식별하기위한 필수값)
+        schema:
+          type: string
+          default: "MAGICPLUS"
+        required: true
+      - in: header
+        name: API-VERSION
+        description: API버전(버전에 따른 API주소)
+        schema:
+          type: string
+          default: "v1"
+        required: true
+    requestBody:
+      description: 인증토큰을 발급받기 위한 Payload 데이터
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - Name
+              - UserEmail
+              - PhoneNumber
+              - BirthDate
+              - Gender              
+            properties:
+              Csno:
+                type: string
+                description: "사용자등록번호"
+                example: ""
+              Name:
+                type: string
+                description: "사용자명"
+                example: "홍길동"
+              UserEmail: 
+                type: string 
+                description: 사용자 이메일
+                example: "xxxxx@xxxxx.com"
+              PhoneNumber: 
+                type: string 
+                description: 사용자 연락처
+                example: "010-1234-5678"
+              BirthDate: 
+                type: string 
+                description: 사용자 생년월일
+                example: "19000101"
+              Gender: 
+                type: string 
+                description: 사용자 성별
+                example: "M"
+              RedirectUrl: 
+                type: string 
+                description: 리다이렉트 Url
+                example: "리턴받을 URL"
+    responses:
+      200:
+        description: 인증토큰 발급 성공.
+        content:
+          application/json:        
+            schema:
+              type: object
+              required: 
+                  - ResCode
+                  - ResMessage
+                  - ResData
+              properties:
+                ResCode:
+                  type: string 
+                  description: 결과 코드
+                  example: "0000"
+                ResMessage:
+                  type: string 
+                  description: 결과 메세지
+                  example: "성공"
+                ResData:
+                  type: object
+                  description: 응답 데이터
+                  properties:                  
+                    Csno:
+                      type: string
+                      description: 등록된 사용자 번호
+                      example: "MP2023040700001"
+                    Type:
+                      type: string
+                      description: 인증토큰 유형
+                      example: "bearer"
+                    AccessToken:
+                      type: string
+                      description: JWT인증토큰
+                      example: "eyJhbGciOiJIUzI1....."
+                    RefreshToken:
+                      type: string
+                      description: JWT갱신토큰
+                      example: "eyJhbGciOiJIUzI1....."
+                    ExpiresIn:
+                      type: integer
+                      description: JWT인증토큰 만료기간(TimeStamp)
+                      example: 1681288451
+                    RedirectUrl:
+                      type: string
+                      description: 리다이렉트 Url
+                      example: "http://localhost:9000/magicplus/app/v1/app"
+      400:
+        description: 요청형식이 맞지 않을 경우.
+        schema:
+          type: object
+          required: 
+              - ResCode
+              - ResMessage
+              - ResData
+          properties:
+            ResCode:
+              type: string 
+              description: 결과 코드
+              enum: 
+                - "3000" : 형식이 올바르지 않습니다.<br>
+                - "3001" : 요청 Header 형식이 올바르지 않습니다.<br>
+                - "3002" : 요청 Body 형식이 올바르지 않습니다.<br>
+                - "3003" : 요청 Header에 API-ID값이 올바르지 않습니다.<br>
+                - "3004" : 요청 Body에 Parameters가 올바르지 않습니다.
+              example: "3004"
+            ResMessage:
+              type: string 
+              description: 결과 메세지
+              example: "성공"
+            ResData:
+              type: string 
+              description: 응답 데이터
+              example: ""
+      404:
+        description: 요청 Url을 찾을 수 없는 경우.
+      500:
+        description: 서버에서 알 수 없는 상황이 발생.
